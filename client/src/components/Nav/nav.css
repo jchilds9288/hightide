@@ -1,0 +1,14 @@
+.htNav {
+    background: linear-gradient(to bottom right, rgb(145, 137, 250), rgb(120, 201, 248));
+}
+
+.navbar-brand {
+    font-family: "Fugaz One";
+    font-size: 30px;
+    color:rgb(240, 79, 50);
+}
+
+.btn {
+    margin-left: 5px;
+    margin-right: 5px;
+}

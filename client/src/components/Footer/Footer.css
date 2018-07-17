@@ -1,0 +1,11 @@
+.htFooter {
+    background: linear-gradient(to bottom right, rgb(125, 118, 224), rgb(44, 124, 170));
+}
+
+#footText {
+    color:white;
+    font-size: 15px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
