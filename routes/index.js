@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
+const router = require("express").Router();
+const userRoutes = require("./users");
+const authRoutes = require("./oauth")
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.use("/users", userRoutes);
+router.use("/auth", authRoutes);
 
 module.exports = router;

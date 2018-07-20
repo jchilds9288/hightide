@@ -1,10 +1,15 @@
-.textWater {
-    /* background-image:  url("./imgs/waves.png"); */
-    background-color: #ec0909;
-}
+
 
 .textArea {
     background: linear-gradient( rgb(179, 227, 250), rgb(139, 209, 250), rgb(255, 255, 255));
     width: 100%;
 
+}
+
+.introText {
+    font-family: 'Montserrat';
+    text-align: center;
+    font-size: 175%;
+    color: rgb(240, 79, 50);
+    font-weight: bold;
 }

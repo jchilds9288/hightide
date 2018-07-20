@@ -1,5 +1,5 @@
 import React, {Component} from  "react";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
@@ -8,6 +8,51 @@ import gplus from "../../imgs/google-plus.png"
 
 
 class SignUp extends Component {
+ 
+    state = {
+    firstName: "",
+    lastName: "",
+    address: "",
+    address2: "",
+    city: "",
+    state:"",
+    zip: "",
+    email: "",
+    password: "",
+    score: 0,
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    })
+    // .then(console.log("handlechange"));
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.firstName && this.state.lastName && this.state.address && this.state.city && this.state.state && this.state.zip && this.state.email && this.state.password){
+        API.saveUser({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            address: this.state.address,
+            address2: this.state.address2,
+            city: this.state.city,
+            state: this.state.state,
+            zip: this.state.zip,
+            email: this.state.email,
+            password: this.state.password,
+            date: new Date(Date.now())
+        })
+        .then(console.log("formsubmit"))
+        .catch(err => console.log(err));
+
+    }
+
+  }
+
+ 
 
     render() {
         return (
@@ -35,9 +80,9 @@ class SignUp extends Component {
                         <Col size="md-6">
                             <form>
                                 <Input
-                                    // value={this.state.title}
-                                    // onChange={this.handleInputChange}
-                                    name="First Name"
+                                    value={this.state.firstName}
+                                    onChange={this.handleInputChange}
+                                    name="firstName"
                                     placeholder="First Name (required)"
                                 />
                             </form>  
@@ -45,9 +90,9 @@ class SignUp extends Component {
                         <Col size="md-6">
                             <form>   
                                 <Input
-                                    // value={this.state.author}
-                                    // onChange={this.handleInputChange}
-                                    name="Last Name"
+                                    value={this.state.lastName}
+                                    onChange={this.handleInputChange}
+                                    name="lastName"
                                     placeholder="Last Name (required)"
                                 />
                             </form>    
@@ -55,9 +100,9 @@ class SignUp extends Component {
                         <Col size="md-12">
                             <form>   
                                 <Input
-                                    // value={this.state.author}
-                                    // onChange={this.handleInputChange}
-                                    name="Address"
+                                    value={this.state.address}
+                                    onChange={this.handleInputChange}
+                                    name="address"
                                     placeholder="Address (required)"
                                 />
                             </form>    
@@ -65,9 +110,9 @@ class SignUp extends Component {
                         <Col size="md-12">
                             <form>   
                                 <Input
-                                    // value={this.state.author}
-                                    // onChange={this.handleInputChange}
-                                    name="Address 2"
+                                    value={this.state.address2}
+                                    onChange={this.handleInputChange}
+                                    name="address2"
                                     placeholder="Apartment, Studio, or Floor"
                                 />
                             </form>    
@@ -75,9 +120,9 @@ class SignUp extends Component {
                         <Col size="md-6">
                             <form>   
                                 <Input
-                                    // value={this.state.author}
-                                    // onChange={this.handleInputChange}
-                                    name="City"
+                                    value={this.state.city}
+                                    onChange={this.handleInputChange}
+                                    name="city"
                                     placeholder="City (required)"
                                 />
                             </form>    
@@ -85,9 +130,9 @@ class SignUp extends Component {
                         <Col size="md-4">
                             <form>   
                                 <Input
-                                    // value={this.state.author}
-                                    // onChange={this.handleInputChange}
-                                    name="State"
+                                    value={this.state.state}
+                                    onChange={this.handleInputChange}
+                                    name="state"
                                     placeholder="State (required)"
                                 />
                             </form>    
@@ -95,9 +140,9 @@ class SignUp extends Component {
                         <Col size="md-2">
                             <form>   
                                 <Input
-                                    // value={this.state.author}
-                                    // onChange={this.handleInputChange}
-                                    name="Zip"
+                                    value={this.state.zip}
+                                    onChange={this.handleInputChange}
+                                    name="zip"
                                     placeholder="Zip (req)"
                                 />
                             </form>    
@@ -106,9 +151,9 @@ class SignUp extends Component {
                             <form>   
                                 <h3> Username </h3>
                                 <Input
-                                    // value={this.state.author}
-                                    // onChange={this.handleInputChange}
-                                    name="Email"
+                                    value={this.state.email}
+                                    onChange={this.handleInputChange}
+                                    name="email"
                                     placeholder="Email Adress (required)"
                                 />
                             </form>    
@@ -119,14 +164,14 @@ class SignUp extends Component {
                         <Col size="md-6">
                             <form>   
                                 <Input
-                                    // value={this.state.author}
-                                    // onChange={this.handleInputChange}
-                                    name="Password"
+                                    value={this.state.password}
+                                    onChange={this.handleInputChange}
+                                    name="password"
                                     placeholder="Password"
                                 />
                             </form>    
                         </Col>
-                        <Col size="md-6">
+                        {/* <Col size="md-6">
                             <form>   
                                 <Input
                                     // value={this.state.author}
@@ -135,12 +180,12 @@ class SignUp extends Component {
                                     placeholder="Re-enter Password"
                                 />
                             </form>    
-                        </Col>
+                        </Col> */}
                         <Col size="md-12">
                             <form>
                                 <FormBtn
-                                    // disabled={!(this.state.author && this.state.title)}
-                                    // onClick={this.handleFormSubmit}
+                                    disabled={!(this.state.firstName && this.state.lastName && this.state.address && this.state.city && this.state.state && this.state.zip && this.state.email && this.state.password)}
+                                    onClick={this.handleFormSubmit}
                                 >
                                     Sign Up!
                                 </FormBtn>

@@ -23,8 +23,8 @@ const Nav = () => (
       </li> */}
     </ul>
     <span className="navbar-text">
-    <a href="login" class="btn btn-outline-danger my-2 my-sm-0 " role="button">Login</a>
-    <a href="signup" class="btn btn-outline-danger my-2 my-sm-0 " role="button">Sign-Up</a>
+    <a href="login" className="btn btn-outline-danger my-2 my-sm-0 " role="button">Login</a>
+    <a href="signup" className="btn btn-outline-danger my-2 my-sm-0 " role="button">Sign-Up</a>
     </span>
   </div>
 </nav>

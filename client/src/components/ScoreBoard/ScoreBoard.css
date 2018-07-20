@@ -1,0 +1,27 @@
+.scoreInfo {
+    font-family: "Fugaz One";
+    font-size: 750%;
+    text-align: center; 
+    color:rgb(240, 79, 50);
+}
+
+.scoreTitle{
+    font-family: "Fugaz One";
+    font-size: 225%;
+    text-align: center; 
+    color:rgb(240, 79, 50);
+}
+
+.achievements { 
+    font-family: "Fugaz One";
+    font-size: 350%;
+    text-align: center; 
+    color:rgb(255, 230, 2);
+}
+
+.achievementTitle{
+    font-family: "Fugaz One";
+    font-size: 175%;
+    text-align: center; 
+    color:rgb(255, 230, 2);
+}

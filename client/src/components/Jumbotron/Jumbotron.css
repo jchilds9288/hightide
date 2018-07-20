@@ -12,20 +12,21 @@
     font-family: "Fugaz One";
 }
 
-h1 {
+.jumbo-title{
     font-family: "Fugaz One";
     font-size: 1500%;
     text-align: center; 
     color:rgb(240, 79, 50);
-    /* text-shadow:
-    -1px -1px 0 #000,  
-     1px -1px 0 #000,
-     -1px 1px 0 #000,
-      1px 1px 0 #000; */
+    
+    text-shadow:
+    -3px -3px 0 rgb(167, 26, 26),  
+     3px -3px 0 rgb(167, 26, 26),
+     -3px 3px 0 rgb(167, 26, 26),
+      3px 3px 0 rgb(167, 26, 26);
     margin-bottom: 25px;
 }
 
-p {
+.jumbo-intro {
     font-family: 'Montserrat';
     text-align: center;
     font-size: 175%;
