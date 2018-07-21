@@ -1,6 +1,6 @@
 import React, {Component} from  "react";
 import API from "../../utils/API";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
 import flogo from "../../imgs/flogo.png"
@@ -44,9 +44,15 @@ class SignUp extends Component {
             email: this.state.email,
             password: this.state.password,
             date: new Date(Date.now())
+        })  
+        .then(response=> {
+            const { data } = response;
+            sessionStorage.setItem('userId', data._id);
+            this.props.history.push('/list')
         })
-        .then(console.log("formsubmit"))
-        .catch(err => console.log(err));
+        
+        .catch(err => console.log(err))
+
 
     }
 
@@ -182,13 +188,22 @@ class SignUp extends Component {
                             </form>    
                         </Col> */}
                         <Col size="md-12">
-                            <form>
-                                <FormBtn
+                    
+                            <form>   
+                                    <FormBtn 
+                                         disabled={!(this.state.firstName && this.state.lastName && this.state.address && this.state.city && this.state.state && this.state.zip && this.state.email && this.state.password)}
+                                         onClick={this.handleFormSubmit}
+                                        >
+                                        
+                                        Sign Up!
+                                    
+                                    </FormBtn>
+                                 
+                                {/* <Link to="/list" role="button" className="btn btn-link btn-success" 
                                     disabled={!(this.state.firstName && this.state.lastName && this.state.address && this.state.city && this.state.state && this.state.zip && this.state.email && this.state.password)}
-                                    onClick={this.handleFormSubmit}
-                                >
-                                    Sign Up!
-                                </FormBtn>
+                                    onClick={this.handleFormSubmit}>
+                                    Sign In 
+                                </Link>   */}
                             </form>
                         </Col>
                     </Row>    

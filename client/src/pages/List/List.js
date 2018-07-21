@@ -1,18 +1,26 @@
 import React, {Component} from  "react";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { Input, InputLarge, FormBtn } from "../../components/Form";
+import { InputLarge, FormBtn, Option } from "../../components/Form";
 import { ScoreBoard, Achievements } from "../../components/ScoreBoard";
-import VoyageScene from "../../components/VoyageScene";
 import voyageImg from "../../imgs/voyage_1.png"
 
 
 class List extends Component {
     state = {
-        task: "",
+        task: {},
         points: 0,
     }
+
+    componentDidMount() {
+        const userId = sessionStorage.getItem('userId');
+        console.log(userId)
+        // API.getUser(this.props.match.params.id)
+        //   .then(res => this.setState({task: res.data, points: res.data }))
+        //   .catch(err => console.log(err));
+      }
+
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -21,6 +29,20 @@ class List extends Component {
         })
         // .then(console.log("handlechange"));
       };
+
+    handleTaskSubmit = event => {
+        event.preventDefault();
+        if (this.state.task){
+            API.saveTask({
+                task: this.state.task,
+                points: this.state.points,
+            })
+            .then(console.log("saved task"))
+            .catch(err => console.log(err));
+    
+        }
+    
+      }
 
     render(){
         return(
@@ -59,14 +81,13 @@ class List extends Component {
                     </Col>
                     <Col size="md-12">
                         <img src= {voyageImg} className="voyageImg" alt="voyage"></img>
-                        {/* <VoyageScene>
-                        </VoyageScene> */}
+                       
                     </Col>
                     <Col size="md-5">
                         <form >
                             <InputLarge
-                                // value={this.state.task}
-                                // onChange={this.handleInputChange}
+                                value={this.state.task}
+                                onChange={this.handleInputChange}
                                 name="task"
                                 placeholder="Add a task!"
                             />
@@ -75,35 +96,64 @@ class List extends Component {
                     <Col size="md-1">
                         <form >
                             <select className="form-control form-control-lg">
-                                <option>
+                                <Option   
+                                value={this.state.points}
+                                onChange={this.handleInputChange}
+                                name="points">
+                                    1
+                                </Option>
+                                <Option 
+                                value={this.state.points}
+                                onChange={this.handleInputChange}
+                                name="points">
+                                    3
+                                </Option>
+                                <Option 
+                                value={this.state.points}
+                                onChange={this.handleInputChange}
+                                name="points">
+                                    5
+                                </Option>
+                                
+                                {/* <option>
                                     1
                                     <Input
-                                        // value={this.state.task}
-                                        // onChange={this.handleInputChange}
-                                        name="task"
+                                        value={1}
+                                        onChange={this.handleInputChange}
+                                        name="points"
                                         placeholder="Add a task!"
                                     />
-                                </option>
+                                </option> 
                                 <option>
                                     3
-                                    <Input
-                                        // value={this.state.task}
-                                        // onChange={this.handleInputChange}
-                                        name="task"
+                                     <Input
+                                        value={3}
+                                        onChange={this.handleInputChange}
+                                        name="points"
                                         placeholder="Add a task!"
                                     />
                                 </option>
                                 <option>
                                     5
-                                    <Input
-                                        // value={this.state.task}
-                                        // onChange={this.handleInputChange}
-                                        name="task"
+                                     <Input
+                                        value= {5}
+                                        onChange={this.handleInputChange}
+                                        name="points"
                                         placeholder="Add a task!"
-                                    />
-                                </option>
+                                    /> 
+                                </option> */}
                             </select>
                         </form> 
+                    </Col>
+                    <Col size="md-1">
+                        <form>
+                            <FormBtn
+                                disabled={!(this.state.task)}
+                                onClick={this.handleTaskSubmit}
+                            >
+                                Add Task!
+                            </FormBtn>
+                        </form>
                     </Col>
                 </Row>
             </Container>

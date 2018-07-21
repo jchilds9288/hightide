@@ -1,5 +1,5 @@
 import React, {Component} from  "react";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
@@ -18,6 +18,17 @@ class Login extends Component {
           [name]: value
         })
         // .then(console.log("handlechange"));
+      };
+      
+      handleFormSubmit = event => {
+        event.preventDefault();
+        if (this.state.email && this.state.passowrd) {
+          API.getUser({
+            _id: "5b4ff5cfa7c14e4d348ad836",
+          })
+            .then(res => this.loadUserTasks())
+            .catch(err => console.log(err))
+        }
       };
     
     render(){

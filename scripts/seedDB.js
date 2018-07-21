@@ -18,7 +18,8 @@ const hightideSeed = [
     email:"hello@gmail.com",
     password:"test",
     score: 0,
-    date: new Date(Date.now())
+    date: new Date(Date.now()),
+  
 },
 {
     firstName: "Eliza",
@@ -88,9 +89,17 @@ const hightideSeed = [
 
 ];
 
+const taskSeed = [
+{task: "Ball on the Haters",
+points: 5,
+}
+
+]
+
 db.Hightidedb
   .remove({})
   .then(() => db.Hightidedb.collection.insertMany(hightideSeed))
+  .then(() => db.Taskdb.collection.insertMany(taskSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
@@ -99,3 +108,5 @@ db.Hightidedb
     console.error(err);
     process.exit(1);
   });
+
+ 

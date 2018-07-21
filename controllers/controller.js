@@ -13,5 +13,27 @@ module.exports = {
             res.status(422).json(err)
         },
     )
-    }   
+    },
+    
+    findById: function(req,res){
+        console.log("getting User")
+        db.Hightidedb
+        .findById({_id: req.params.id})
+        .populate("task")
+        .then(newUser => res.json(newUser))
+        .catch(err => res.status(422).json(err))
+    },
+
+    createTask: function(req, res){
+        console.log("create Task")
+        db.Taskdb
+        .create(req.body)
+        .then(newTask => res.json(newTask))
+        // .then(() => {console.log("controller")})
+        .catch(err => {
+            console.log(err)
+            res.status(422).json(err)
+        }
+        )
+    }
 }

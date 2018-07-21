@@ -12,8 +12,12 @@ const hightideSchema = new Schema({
     email:{type: String, required:true},
     password:{type: String, required:true},
     score: {type:Number, default: 0},
-    date: { type: Date, default: Date.now }
-})
+    date: { type: Date, default: Date.now },
+    task: {
+        type: Schema.Types.ObjectId,
+        ref:"Task"
+    }
+});
 
 const Hightidedb = mongoose.model("Hightidedb", hightideSchema);
 

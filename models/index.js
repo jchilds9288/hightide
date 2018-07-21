@@ -1,3 +1,4 @@
 module.exports = {
-    Hightidedb: require("./hightidedb")
+    Hightidedb: require("./hightidedb"),
+    Taskdb: require("./Task")
   };
