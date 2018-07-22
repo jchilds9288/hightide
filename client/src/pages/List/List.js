@@ -14,13 +14,31 @@ class List extends Component {
     }
 
     componentDidMount() {
+        this.loadTasks();
         const userId = sessionStorage.getItem('userId');
+        const score = sessionStorage.getItem('score');
         console.log(userId)
+        console.log(score)
         // API.getUser(this.props.match.params.id)
         //   .then(res => this.setState({task: res.data, points: res.data }))
         //   .catch(err => console.log(err));
       }
 
+    // loadUserData = (id) => {
+    //     API.getUserData(id)
+    //     .then(res =>
+    //     this.setState({users: res.data}))
+    //     .catch(err => console.log(err));
+    // }
+
+    loadTasks = () => {
+        API.getTasks()
+        .then(res => this.setState({tasks: res.data, task: "", points:""})
+    )
+        .then(console.log("shoule be loading tasks"))
+        .catch(err => console.log(err))
+      
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -42,6 +60,7 @@ class List extends Component {
     
         }
     
+    
       }
 
     render(){
@@ -54,7 +73,7 @@ class List extends Component {
                     <Col size="md-4">    
                         <h1 className="scoreTitle">% of Daily Voyage Completed</h1>
                         <ScoreBoard>
-                            <p>68%</p>
+                            <p>{sessionStorage.getItem('score')}</p>
                         </ScoreBoard>
                     </Col>
                     <Col size="md-4">    
@@ -95,6 +114,15 @@ class List extends Component {
                     </Col>
                     <Col size="md-1">
                         <form >
+                            <InputLarge
+                                value={this.state.points}
+                                onChange={this.handleInputChange}
+                                name="points"
+                                placeholder="Points"
+                            />
+                        </form> 
+                        
+                        {/* <form >
                             <select className="form-control form-control-lg">
                                 <Option   
                                 value={this.state.points}
@@ -113,7 +141,7 @@ class List extends Component {
                                 onChange={this.handleInputChange}
                                 name="points">
                                     5
-                                </Option>
+                                </Option> */}
                                 
                                 {/* <option>
                                     1
@@ -142,8 +170,8 @@ class List extends Component {
                                         placeholder="Add a task!"
                                     /> 
                                 </option> */}
-                            </select>
-                        </form> 
+                            {/* </select>
+                        </form>  */}
                     </Col>
                     <Col size="md-1">
                         <form>

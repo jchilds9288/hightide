@@ -3,6 +3,8 @@ import API from "../../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
+import flogo from "../../imgs/flogo.png"
+import gplus from "../../imgs/google-plus.png"
 
 class Login extends Component {
     
@@ -72,6 +74,19 @@ class Login extends Component {
                         </form>
                     </Col>
                 </Row>
+                <Col size="md-6">
+                    <Row>
+                        <Col size = "md-12">
+                            <h3>Sign Up Options</h3>
+                        </Col>
+                        <Col size = "md-6">
+                        <a href='#'><img src= {flogo} className="f-logo" alt="flogo"></img></a>
+                        </Col>
+                        <Col size = "md-6">
+                        <a href='/google'><img src= {gplus} className="google-logo" alt="Google + Logo"></img></a>
+                        </Col>
+                    </Row>
+                </Col>
             </Container>
         )
         }

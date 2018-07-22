@@ -1,16 +1,15 @@
 require("dotenv").config()
-var cors = require('cors')
-var createError = require('http-errors');
-var express = require('express');
-var session = require("express-session");
-var passport = require("passport");
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const cors = require('cors')
+const createError = require('http-errors');
+const express = require('express');
+const session = require("express-session");
+const passport = require("passport");
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const mongoose = require("mongoose");
 const routes = require("./routes");
-
-var app = express();
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -22,12 +21,14 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors())
 
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require('passport-google-oauth20');
+
 passport.use(new GoogleStrategy({
 
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/auth/google/callback"
+  callbackURL: "http://localhost:3000/auth/google/callback",  
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ googleId: profile.id }, function (err, user) {

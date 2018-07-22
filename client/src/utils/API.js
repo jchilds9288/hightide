@@ -6,11 +6,15 @@ export default {
         return axios.post("http://localhost:3001/api/users",userData)
     },
 
-    saveTask: function(taskData){
-        return axios.post("http://localhost:3001/api/users/:id",taskData)
+    saveTask: function(id){
+        return axios.post("/api/users/" + id)
     },
     // Get the user with given id
-    getUser: function(id) {
+    getUserData: function(id) {
         return axios.get("api/users/" + id)
     },
+
+    getTasks: function(id){
+        return axios.get("/api/users/" + id)
+    }
 };

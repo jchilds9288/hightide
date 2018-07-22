@@ -48,7 +48,9 @@ class SignUp extends Component {
         .then(response=> {
             const { data } = response;
             sessionStorage.setItem('userId', data._id);
-            this.props.history.push('/list')
+            sessionStorage.setItem('score', data.score)
+            this.props.history.push('/users/' + data._id)
+            // this.props.history.push('/list')
         })
         
         .catch(err => console.log(err))
