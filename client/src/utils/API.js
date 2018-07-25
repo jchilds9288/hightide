@@ -11,7 +11,7 @@ export default {
     },
     // Get the user with given id
     getUserData: function(id) {
-        return axios.get("api/users/" + id)
+        return axios.get("/api/users/" + id)
     },
 
     getTasks: function(id){

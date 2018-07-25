@@ -1,0 +1,51 @@
+.listTitle {
+    font-family: "Fugaz One";
+    font-size: 650%;
+    text-align: center; 
+    color:rgb(240, 79, 50);
+    margin-bottom: 35px;
+    
+    /* text-shadow:
+    -3px -3px 0 rgb(167, 26, 26),  
+     3px -3px 0 rgb(167, 26, 26),
+     -3px 3px 0 rgb(167, 26, 26),
+      3px 3px 0 rgb(167, 26, 26);
+    margin-bottom: 25px; */
+}
+
+.dailyTaskTitle {
+    font-family: "Fugaz One";
+    font-size: 650%;
+    text-align: center; 
+    color:rgb(240, 79, 50);
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+  
+.voyageImg {
+    position: relative;
+    width: 100%;
+    height: 250px;
+}
+  
+.shipList {
+    position: absolute;
+    width: 175px;
+    top: 125px;
+    left: 95px;
+    
+}
+
+.addTaskForm {
+    padding-left:400px;
+
+}
+.addTaskPoints {
+    /* margin-left:100px; */
+   
+
+}
+
+.addTask{
+    width:100%;
+}

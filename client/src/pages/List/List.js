@@ -2,9 +2,15 @@ import React, {Component} from  "react";
 import API from "../../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { InputLarge, FormBtn, Option } from "../../components/Form";
+import  Card  from "../../components/Card";
+import { InputLarge, FormBtn } from "../../components/Form";
 import { ScoreBoard, Achievements } from "../../components/ScoreBoard";
 import voyageImg from "../../imgs/voyage_1.png"
+import boat from "../../imgs/boat.png"
+import "./List.css"
+
+
+
 
 
 class List extends Component {
@@ -14,9 +20,9 @@ class List extends Component {
     }
 
     componentDidMount() {
-        this.loadTasks();
         const userId = sessionStorage.getItem('userId');
         const score = sessionStorage.getItem('score');
+        this.loadTasks(userId);
         console.log(userId)
         console.log(score)
         // API.getUser(this.props.match.params.id)
@@ -31,9 +37,9 @@ class List extends Component {
     //     .catch(err => console.log(err));
     // }
 
-    loadTasks = () => {
-        API.getTasks()
-        .then(res => this.setState({tasks: res.data, task: "", points:""})
+    loadTasks = (userid) => {
+        API.getTasks(userid)
+        .then(res => this.setState({tasks: res.data, _id: "",task: "", points:""})
     )
         .then(console.log("shoule be loading tasks"))
         .catch(err => console.log(err))
@@ -99,90 +105,120 @@ class List extends Component {
                         </Row>
                     </Col>
                     <Col size="md-12">
-                        <img src= {voyageImg} className="voyageImg" alt="voyage"></img>
-                       
+                        <div>
+                            <img src= {voyageImg} className="voyageImg" alt="voyage"></img>
+                            <img src= {boat} className="shipList" alt="waves"/>
+                       </div>
                     </Col>
-                    <Col size="md-5">
-                        <form >
-                            <InputLarge
-                                value={this.state.task}
-                                onChange={this.handleInputChange}
-                                name="task"
-                                placeholder="Add a task!"
-                            />
-                        </form> 
+                    <Col size="md-12">
+                        <h1 className="dailyTaskTitle">DAILY TASKS</h1>
                     </Col>
-                    <Col size="md-1">
-                        <form >
-                            <InputLarge
-                                value={this.state.points}
-                                onChange={this.handleInputChange}
-                                name="points"
-                                placeholder="Points"
-                            />
-                        </form> 
-                        
-                        {/* <form >
-                            <select className="form-control form-control-lg">
-                                <Option   
-                                value={this.state.points}
-                                onChange={this.handleInputChange}
-                                name="points">
-                                    1
-                                </Option>
-                                <Option 
-                                value={this.state.points}
-                                onChange={this.handleInputChange}
-                                name="points">
-                                    3
-                                </Option>
-                                <Option 
-                                value={this.state.points}
-                                onChange={this.handleInputChange}
-                                name="points">
-                                    5
-                                </Option> */}
-                                
-                                {/* <option>
-                                    1
-                                    <Input
-                                        value={1}
-                                        onChange={this.handleInputChange}
-                                        name="points"
-                                        placeholder="Add a task!"
-                                    />
-                                </option> 
-                                <option>
-                                    3
-                                     <Input
-                                        value={3}
-                                        onChange={this.handleInputChange}
-                                        name="points"
-                                        placeholder="Add a task!"
-                                    />
-                                </option>
-                                <option>
-                                    5
-                                     <Input
-                                        value= {5}
-                                        onChange={this.handleInputChange}
-                                        name="points"
-                                        placeholder="Add a task!"
-                                    /> 
-                                </option> */}
-                            {/* </select>
-                        </form>  */}
+                    <Col size="md-9">
+                        <Card>
+                           <Row>
+                                <Col size="md-2">
+                                </Col>
+                                <Col size="md-8">
+                                    <h1 className = "taskHeader"> Go out to Lunch with Raffaello</h1>
+                                </Col>
+                                <Col size="md-2">
+                                    <h1 className = "taskPoints"> Points: 5</h1>
+                                </Col>
+                            </Row>
+                        </Card>
                     </Col>
-                    <Col size="md-1">
-                        <form>
-                            <FormBtn
-                                disabled={!(this.state.task)}
-                                onClick={this.handleTaskSubmit}
-                            >
-                                Add Task!
-                            </FormBtn>
-                        </form>
+                    <Col size="md-9">
+                        <Card>
+                           <Row>
+                                <Col size="md-2">
+                                </Col>
+                                <Col size="md-8">
+                                    <h1 className = "taskHeader"> Go for a Run</h1>
+                                </Col>
+                                <Col size="md-2">
+                                    <h1 className = "taskPoints"> Points: 5</h1>
+                                </Col>
+                            </Row>
+                        </Card>
                     </Col>
+                    <Col size="md-9">
+                        <Card>
+                           <Row>
+                                <Col size="md-2">
+                                </Col>
+                                <Col size="md-8">
+                                    <h1 className = "taskHeader"> Read an Academic Paper</h1>
+                                </Col>
+                                <Col size="md-2">
+                                    <h1 className = "taskPoints"> Points: 3</h1>
+                                </Col>
+                            </Row>
+                        </Card>
+                    </Col>
+                    <Col size="md-9">
+                        <Card>
+                           <Row>
+                                <Col size="md-2">
+                                </Col>
+                                <Col size="md-8">
+                                    <h1 className = "taskHeader"> NO SUGAR! </h1>
+                                </Col>
+                                <Col size="md-2">
+                                    <h1 className = "taskPoints"> Points: 3</h1>
+                                </Col>
+                            </Row>
+                        </Card>
+                    </Col>
+                    <Col size="md-9">
+                        <Card>
+                           <Row>
+                                <Col size="md-2">
+                                </Col>
+                                <Col size="md-8">
+                                    <h1 className = "taskHeader"> Grab Beer with Max</h1>
+                                </Col>
+                                <Col size="md-2">
+                                    <h1 className = "taskPoints"> Points: 1</h1>
+                                </Col>
+                            </Row>
+                        </Card>
+                    </Col>
+                   
+                       <div className="addTask">  
+                        <Row>
+                        <Col size="md-5">
+                            <form className="addTaskForm" >
+                                <InputLarge
+                                    value={this.state.task}
+                                    onChange={this.handleInputChange}
+                                    name="task"
+                                    placeholder="Add a task!"
+                                />
+                            </form> 
+                        </Col>
+                        <Col size="md-1">
+                            <form className="addTaskPoints" >
+                                <InputLarge
+                                    value={this.state.points}
+                                    onChange={this.handleInputChange}
+                                    name="points"
+                                    placeholder="Points"
+                                />
+                            </form> 
+                            
+                        </Col>
+                        <Col size="md-1">
+                            <form>
+                                <FormBtn
+                                    disabled={!(this.state.task)}
+                                    onClick={this.handleTaskSubmit}
+                                >
+                                    Add Task!
+                                </FormBtn>
+                            </form>
+                        </Col>
+                        </Row>
+                    </div>
                 </Row>
             </Container>
         )

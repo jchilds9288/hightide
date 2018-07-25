@@ -1,12 +1,13 @@
 
 
 .jumbotron {
+    position: relative;
     width: 1250px;
     background-color: white;
     margin-top: 45px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 0;
+    margin-bottom: 50px;
     padding-bottom:5;
     
     font-family: "Fugaz One";
@@ -16,13 +17,12 @@
     font-family: "Fugaz One";
     font-size: 1500%;
     text-align: center; 
-    color:rgb(240, 79, 50);
-    
-    text-shadow:
-    -3px -3px 0 rgb(167, 26, 26),  
-     3px -3px 0 rgb(167, 26, 26),
-     -3px 3px 0 rgb(167, 26, 26),
-      3px 3px 0 rgb(167, 26, 26);
+    /* color:rgb(240, 79, 50); */
+    background: -webkit-linear-gradient(rgb(238, 92, 67),rgb(240, 49, 15));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+  
     margin-bottom: 25px;
 }
 
@@ -34,3 +34,9 @@
     font-weight: bold;
 }
 
+.birds {
+    width: 20%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}

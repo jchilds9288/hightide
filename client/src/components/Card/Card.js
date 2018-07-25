@@ -1,14 +1,25 @@
 import React from "react";
-import CardBtn from "../CardBtn";
 import "./Card.css";
+import { Col, Row, Container } from "../../components/Grid";
 
-const Card = props => {(
+
+export const Card = ({children}) => (
 
 <div className= "card">
-    <h3>{props.task}</h3>
-    <h3>{props.points}</h3>
+ 
+ 
+    <div class="page__toggle">
+        <label class="btoggle">
+            <input class="btoggle__input" type="checkbox"/>
+            <span class="btoggle__label">
+            <span class="btoggle__text">
 
+            </span>
+            </span>
+        </label>
+    </div> 
+    {children}
 </div>
-)}
+)
 
 export default Card;

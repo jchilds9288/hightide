@@ -1,59 +1,53 @@
-require("dotenv").config()
-const cors = require('cors')
+
+
 const createError = require('http-errors');
-const express = require('express');
-const session = require("express-session");
-const passport = require("passport");
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+var express = require('express');
 const mongoose = require("mongoose");
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var logger = require('morgan');
 const routes = require("./routes");
+const port = process.env.PORT || '3001';
+const passport = require("passport");
+var cors = require('cors');
+
+
 const app = express();
 
+var corsOption = {
+  origin: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  exposedHeaders: ['x-auth-token']
+};
+app.use(cors(corsOption));
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+
+
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({ secret: "cats" }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(cors())
 
-const GoogleStrategy = require('passport-google-oauth20');
+app.use(passport.initialize())
+app.use(passport.session()) 
 
-passport.use(new GoogleStrategy({
-
-  callbackURL: "http://localhost:3000/auth/google/callback",  
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
-));
 
 
 app.use('/api', routes);
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hightidedb");
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname + 'public/index.html'));
-// });
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -68,12 +62,31 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  res.json({
+    message: err.message,
+    error: err
+  });
 });
 
-var port = process.env.PORT || '3001';
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hightidedb");
+
 
 app.listen(port, () => {
   console.log('Server started on port: ' + port);
 });
 
 module.exports = app;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

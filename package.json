@@ -7,9 +7,10 @@
     "heroku-postbuild": "cd client && npm i && npm run build",
     "start": "node app.js",
     "seed": "node scripts/seedDB.js",
-    "dev": "concurrently \"node app.js\" \"cd client && yarn start\""
+    "dev": "concurrently \"nodemon app.js\" \"cd client && yarn start\""
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
@@ -19,9 +20,13 @@
     "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
+    "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.4",
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0"
+    "passport-google-oauth20": "^1.0.0",
+    "passport-google-token": "^0.1.2",
+    "react-google-login": "^3.2.1",
+    "request": "^2.87.0"
   }
 }

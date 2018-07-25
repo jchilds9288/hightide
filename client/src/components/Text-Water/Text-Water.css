@@ -1,7 +1,7 @@
 
 
 .textArea {
-    background: linear-gradient( rgb(179, 227, 250), rgb(139, 209, 250), rgb(255, 255, 255));
+    background: linear-gradient( rgb(179, 235, 255), rgb(139, 209, 250), rgb(255, 255, 255));
     width: 100%;
 
 }
@@ -12,4 +12,22 @@
     font-size: 175%;
     color: rgb(240, 79, 50);
     font-weight: bold;
+}
+
+.WaterImage {
+    position:relative;
+    z-index: 1;
+}
+
+.water-box{
+/* position: relative; */
+z-index: 1;
+}
+
+.ship {
+    position: absolute;
+    width: 200px;
+    top: 510px;
+    left: 95px;
+    z-index: 0;
 }

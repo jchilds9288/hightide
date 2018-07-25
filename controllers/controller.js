@@ -6,7 +6,7 @@ module.exports = {
         console.log(req.body)
         db.Hightidedb
         .create(req.body)
-        .then(newUser => res.json(newUser))
+        .then(dbModel => res.json(dbModel))
         // .then(() => {console.log("controller")})
         .catch(err => {
             console.log(err)
@@ -28,7 +28,7 @@ module.exports = {
         console.log("create Task")
         db.Taskdb
         .create(req.body)
-        .then(newTask => res.json(newTask))
+        .then(dbModel => res.json(dbModel))
         .then(() => {console.log("controller")})
         .catch(err => {
             console.log(err)
@@ -39,10 +39,10 @@ module.exports = {
 
     findAllTasks: function(req,res){
         console.log("find all notes")
-        db.Taskdb
-        .find(req.query)
-        .sort({ points:1 })
-        .then(dbTask => res.josn(dbTask))
+        db.hightidedb
+        .find(req.params.id)
+        // .sort({ points:1 })
+        .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err))
     }
 }
