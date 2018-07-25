@@ -14,13 +14,31 @@ class Home extends Component {
             <Row>
                 <Col size="md-12">
                     <Jumbotron>
-                        <h1 className="jumbo-title">HighTide</h1>
-                        <p className= "jumbo-intro"> A Cooraparitve Task Manager Designed to Make YOU and those Around You Better!</p>
+                        <h1 className="jumbo-title animated zoomIn">HighTide</h1>
+                        <p className= "jumbo-intro"> A Cooperative Task Manager Designed to Make YOU and Those Around You Better!</p>
                     </Jumbotron>
                     <TextWater>
                         <p className="introText"> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et eleifend massa. Aenean ullamcorper est at feugiat luctus. Quisque aliquet aliquet nisi, sed lobortis metus pharetra non. Etiam luctus arcu eros, at blandit est rutrum ac. Suspendisse mauris metus, auctor et est ut, rutrum vulputate nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce mattis sem sed mi dignissim, sed interdum enim finibus. Vivamus sollicitudin mauris eu urna pretium maximus. Vestibulum sit amet leo vulputate, pulvinar felis et, malesuada purus. Mauris orci sem, facilisis non condimentum eget, pulvinar et sem. Phasellus sem mauris, gravida non sem in, blandit maximus lacus. Morbi efficitur erat at mollis pulvinar. Phasellus leo nibh, consequat sed nibh tincidunt, condimentum molestie orci. In eget ullamcorper lectus. 
+                        Make a game that helps a user accomplish their goals and emphasizes:
                         </p>
+
+                        <ol className="introList">
+                            <li>
+                                Team work: Corporation and Network
+                            </li>
+                            <li>
+                                Gradual gains: Lots of small wins
+                            </li>
+                            <li>
+                                Customization: Pushing user, but at their own rate and in direction they desire
+                            </li>
+                            <li>
+                                Progress: No matter who you are, there is a desire to “get better” 
+                            </li>
+                            <li>
+                                Success is bigger than Profession: Success can be found in all aspects of your life
+                            </li>
+                        </ol>
                     </TextWater>    
                 </Col>
             </Row>

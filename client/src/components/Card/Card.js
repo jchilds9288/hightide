@@ -8,11 +8,11 @@ export const Card = ({children}) => (
 <div className= "card">
  
  
-    <div class="page__toggle">
-        <label class="btoggle">
-            <input class="btoggle__input" type="checkbox"/>
-            <span class="btoggle__label">
-            <span class="btoggle__text">
+    <div className="page__toggle">
+        <label className="btoggle">
+            <input className="btoggle__input" type="checkbox"/>
+            <span className="btoggle__label">
+            <span className="btoggle__text">
 
             </span>
             </span>

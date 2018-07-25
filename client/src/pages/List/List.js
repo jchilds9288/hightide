@@ -16,22 +16,27 @@ import "./List.css"
 class List extends Component {
     state = {
         task: {},
+        score:0,
         points: 0,
     }
 
     componentDidMount() {
         const userId = sessionStorage.getItem('userId');
         const score = sessionStorage.getItem('score');
-        this.loadTasks(userId);
-        console.log(userId)
-        console.log(score)
-        // API.getUser(this.props.match.params.id)
-        //   .then(res => this.setState({task: res.data, points: res.data }))
-        //   .catch(err => console.log(err));
-      }
+        API.getUserData(this.props.match.params.id)
+        .then(res => this.setState({book:res.data}))
+        .catch(err => console.log(err));
+    }
+    //     this.loadTasks(userId);
+    //     console.log(userId)
+    //     console.log(score)
+    //     API.getUser(this.props.match.params.id)
+    //       .then(res => this.setState({task: res.data, points: res.data }))
+    //       .catch(err => console.log(err));
+    //   }
 
     // loadUserData = (id) => {
-    //     API.getUserData(id)
+    //     API.findById(id)
     //     .then(res =>
     //     this.setState({users: res.data}))
     //     .catch(err => console.log(err));
@@ -80,6 +85,7 @@ class List extends Component {
                         <h1 className="scoreTitle">% of Daily Voyage Completed</h1>
                         <ScoreBoard>
                             <p>{sessionStorage.getItem('score')}</p>
+                            {/* {this.state.user.score} */}
                         </ScoreBoard>
                     </Col>
                     <Col size="md-4">    
@@ -93,7 +99,7 @@ class List extends Component {
                             <Col size="md-12">
                                 <h3 className="achievementTitle"> Total Captain Points Earned</h3>
                                 <Achievements>
-                                    <p>786</p>
+                                <p>{sessionStorage.getItem('score')}</p>
                                 </Achievements>
                             </Col>
                             <Col size="md-12">
@@ -147,7 +153,7 @@ class List extends Component {
                                 <Col size="md-2">
                                 </Col>
                                 <Col size="md-8">
-                                    <h1 className = "taskHeader"> Read an Academic Paper</h1>
+                                    <h1 className = "taskHeader"> Read an Academic Geo Paper</h1>
                                 </Col>
                                 <Col size="md-2">
                                     <h1 className = "taskPoints"> Points: 3</h1>

@@ -13,17 +13,17 @@ require('../passport')();
 /* GET users listing. */
 router.route('/') 
 .post(controller.create)
-// .post(controller.createTask)
-// .get(controller.findAllTasks)
+.get(controller.findAllTasks)
 
 
 // Matches with "api/users/:id"
 router.route("/:id")
-// .get(controller.findById)
+.get(controller.findById)
 .post(controller.createTask)
-.get(controller.findAllTasks)
+// .get(controller.findAllTasks)
 
 
+// Matches with "api/users/auth/:id"
 router.route('/auth/google')
     .post(passport.authenticate('google-token', {session: false}), function(req, res, next) {
         if (!req.user) {

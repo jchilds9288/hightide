@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../../components/Grid";
 // import flogo from "../../imgs/flogo.png"
 // import gplus from "../../imgs/google-plus.png"
 import { GoogleLogin } from 'react-google-login';
+
 import config from "../../config.json"
 import "./Login.css"
 
@@ -32,6 +33,7 @@ class Login extends Component {
 
     
     googleResponse = (response) => {
+        console.log(response)
         const tokenBlob = new Blob([JSON.stringify({access_token: response.accessToken}, null, 2)], {type : 'application/json'});
         const options = {
             method: 'POST',
@@ -47,6 +49,7 @@ class Login extends Component {
                 }
             });
         })
+       
     };
 
     handleInputChange = event => {
@@ -71,17 +74,20 @@ class Login extends Component {
     render() {
         let content = !!this.state.isAuthenticated ?
                 (
-                    <div>
-                        <p>Authenticated</p>
-                        <div>
-                            {this.state.user.email}
-                        </div>
-                        <div>
-                            <button onClick={this.logout} className="button">
-                                Log out
-                            </button>
-                        </div>
-                    </div>
+
+                    <Redirect to="/users/:id" />
+                    // <div>
+                    //     <p>Authenticated</p>
+                    //     <div>
+                    //         {this.state.user.email}
+                    //         {this.state.user.score}
+                    //     </div>
+                    //     <div>
+                    //         <button onClick={this.logout} className="button">
+                    //             Log out
+                    //         </button>
+                    //     </div>
+                    // </div>
                 ) :
                 (
                     <div>
@@ -95,9 +101,13 @@ class Login extends Component {
                 );
     
             return (
+               
                 <div className="App">
                     {content}
                 </div>
+                
+                  
+                
             );
         }
     }

@@ -5,6 +5,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
 import flogo from "../../imgs/flogo.png"
 import gplus from "../../imgs/google-plus.png"
+
 import "./Sign-Up.css"
 
 
@@ -213,6 +214,7 @@ class SignUp extends Component {
                     </Row>    
                 </Col>
             </Row>
+            
           </Container>
         );
       }

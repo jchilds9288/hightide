@@ -13,7 +13,7 @@ const TextWater = ({ children }) => (
     <div
     className="boatImage"
     >
-    <img src= {boat} className="ship" alt="waves"/>
+    <img src= {boat} className="ship animated slideInLeft" alt="waves"/>
     </div>
 
     <div className= "textArea">

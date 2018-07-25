@@ -12,6 +12,7 @@
     font-size: 175%;
     color: rgb(240, 79, 50);
     font-weight: bold;
+    font-size: 40px;
 }
 
 .WaterImage {
@@ -30,4 +31,12 @@ z-index: 1;
     top: 510px;
     left: 95px;
     z-index: 0;
+}
+
+.introList{
+    font-family: 'Montserrat';
+    font-size: 175%;
+    color: rgb(240, 79, 50);
+    font-weight: bold;
+    margin-left: 300px;
 }
